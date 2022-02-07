@@ -1,0 +1,418 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(30, 31, 28) ;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Home Screen styling*/
+
+.welcomeScreen {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: 1700ms ease-out 0s 1 slideInFromTop;
+}
+
+.welcomeText {
+  font-size: 4rem;
+  color: white;
+}
+
+/* Navigation side menu styling below */
+
+.navbarListElement {
+  list-style-type: none;
+  margin-bottom: .4rem;
+  padding: .4rem;
+  width: 5rem;
+  display: f;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.navbarListElementLink {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2px solid rgb(220, 203, 239);
+  border-radius: .6rem;
+  color: rgb(188, 204, 203);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  filter: grayscale(100%) opacity(0.7);
+  transition: 600ms ease;
+}
+
+.navbarListElementLink:hover {
+  filter: grayscale(0%) opacity(1);
+}
+
+.navElementIcon {
+  min-width: 2rem;
+  margin: 0 1.5rem;
+}
+
+.navbarWrapper {
+  width: 5rem;
+  height: 100vh;
+  background-color: rgb(48, 49, 45);
+  border-right: 2px solid rgba(220, 203, 239, .4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  padding-right: 2.6rem;
+  z-index: 1;
+  transition: width 200ms ease-in-out;
+}
+
+.navbarWrapper:hover {
+  width: 24rem;
+}
+
+.navbarWrapper:hover .linkText {
+  display: block;
+}
+
+.navbarHeader {
+  color: rgb(188, 204, 203);
+  margin-left: 3rem;
+  margin-top: 3rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.linkText {
+  display: none;
+  margin-top: 1rem;
+  margin-left: 1.8rem;
+  flex-basis: 66%;
+}
+
+/*Nav arrow styling*/
+.navArrow {
+  position: absolute;
+  margin-top: 50vh;
+  right: 1rem;
+  z-index: 1;
+}
+
+.screenWrapper {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.coloursWrapper {
+  display: flex;
+  width: 28rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  animation: 1s ease-out 0s 1 slideInFromTop;
+}
+
+.white, .red, .green, .yellow, .blue {
+  border: 4px solid rgb(30, 31, 28);
+  height: 4rem;
+  width: 4rem;
+  z-index: 2;
+  background-color: white;
+  border-radius: 8rem;
+}
+
+.bulbHeader {
+  color: rgb(209, 221, 224);
+  font-size: 2rem;
+  animation: 1s ease-out 0s 1 slideInFromTop;
+}
+
+.white {
+  background-color: rgb(242, 242, 242);
+  position: relative;
+  cursor: pointer;
+}
+
+.red {
+  background-color: rgb(220, 10, 10);
+  position: relative;
+  cursor: pointer;
+}
+
+.green {
+  background-color: rgb(114, 187, 93);
+  position: relative;
+  cursor: pointer;
+}
+
+.yellow{
+  background-color: rgb(253, 240, 78);
+  position: relative;
+  cursor: pointer;
+}
+
+.blue{
+  background-color: rgb(194, 196, 239);
+  position: relative;
+  cursor: pointer;
+}
+
+.green::after, .green::before, .red::after, .red::before, .yellow::after, .yellow::before, .blue::after, .blue::before, .white::after, .white::before {
+  --scale: 0;
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+  transition: 150ms transform;
+  transform-origin: bottom center;
+}
+
+.green::before, .red::before, .yellow::before, .blue::before, .white::before {
+  content: attr(data-tooltip);
+  padding: .5rem;
+  width: max-content;
+  color: white;
+  text-align: center;
+  background-color: rgb(78, 80, 73);
+  border-radius: .6rem;
+}
+
+.green:hover::before, .red:hover::before, .yellow:hover::before, .blue:hover::before, .white:hover::before {
+--scale: 1
+}
+
+.bulbIcon {
+  color: rgb(206, 183, 233);
+  margin-top: 2rem;
+}
+
+.activeBulb {
+  color: rgb(126, 236, 96);
+  margin-left: 2rem;
+}
+
+.inactiveBulb {
+  color: red;
+  margin-left: 2rem;
+}
+
+.powerIconActive {
+  color: rgb(213, 16, 56);
+  background-color: rgba(239, 42, 81, .3);
+  border: 2px solid rgba(239, 42, 81, .3);
+  border-radius: 5rem;
+  margin-right: 2rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.powerIconActive2 {
+  color: rgb(213, 16, 56);
+  background-color: rgba(239, 42, 81, .3);
+  border: 2px solid rgba(239, 42, 81, .3);
+  border-radius: 5rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.powerIconInactive2 {
+  color: rgba(214, 15, 55, .3);
+  border-radius: 5rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.powerIconInactive {
+  color: rgba(214, 15, 55, .3);
+  border-radius: 5rem;
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.connection {
+  font-size: 1.6rem;
+  color: rgba(189, 192, 194, .2);
+}
+
+.brightnessWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 8rem;
+  border: 3px solid white;
+  padding: .5rem;
+  border-radius: 3rem;
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+}
+
+.brightnessHeader {
+  color: white;
+  font-size: 1.4rem;
+  margin-top: -.2rem;
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+}
+
+.addBrightness {
+  border-left: 3px solid white;
+  padding-right: .4rem;
+  padding-left: .8rem;
+  cursor: pointer;
+}
+
+.removeBrightness {
+  padding-left: .4rem;
+  cursor: pointer;
+}
+
+.brightnessLevel {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.inactiveOutlet {
+  color: red;
+  opacity: .8;
+  margin-bottom: 1rem;
+}
+
+.outletIcon {
+  color: rgb(206, 183, 233);
+  margin-top: 2rem;
+}
+
+.outletDevicesHeader, .outletHeader {
+  color: rgb(209, 221, 224);
+  font-size: 2rem;
+  animation: 1s ease-out 0s 1 slideInFromTop;
+  margin-bottom: -.5rem;
+}
+
+.connectionOutlet, .powerConsumption {
+  font-size: 1.6rem;
+  color: rgba(189, 192, 194, .2);
+  animation: 1s ease-out 0s 1 slideInFromTop;
+  margin-bottom: -1rem;
+}
+
+.activeOutlet {
+  color: rgb(126, 236, 96);
+  margin-top: 1rem;
+}
+
+.powerStatusWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 12rem;
+  justify-content: space-evenly;
+}
+
+.connectedDevicesWrapper {
+  display: flex;
+  flex-direction: row;
+  width: 24rem;
+  justify-content: space-evenly;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.tvIcon, .consoleIcon, .droidIcon {
+color: rgb(188, 204, 203);
+font-size: 3rem;
+margin-bottom: 1rem;
+filter: grayscale(100%) opacity(0.7);
+transition: 600ms ease;
+animation: 1s ease-out 0s 1 slideInFromTop;
+position: relative;
+cursor: pointer;
+}
+
+.tvIcon:hover, .consoleIcon:hover, .droidIcon:hover {
+filter: grayscale(0%) opacity(1);
+}
+
+.status {
+  font-size: 1rem;
+  color: rgb(209, 221, 224);
+  border-bottom: 2px solid rgb(209, 221, 224);
+  border-radius: 1rem;
+  padding-bottom: .3rem;
+  width: 5rem;
+  text-align: center;
+}
+
+.tvWrapper, .gamepadWrapper, .robotWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.powerConsumption {
+  color: rgb(225, 216, 106);
+}
+
+.temperatureHeader {
+  color: rgb(209, 221, 224);
+  font-size: 2rem;
+  animation: 1s ease-out 0s 1 slideInFromTop;
+}
+
+.temperatureHeader2 {
+  color: rgb(209, 221, 224);
+  font-size: 2rem;
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+  margin-top: -1rem;
+}
+
+.temperatureHeader3 {
+  color: rgb(209, 221, 224);
+  font-size: 1.4rem;
+  animation: 1s ease-out 0s 1 slideInFromBottom;
+  margin-top: -1rem;
+}
+
+.newHeader2, .newHeader {
+  color: rgb(209, 221, 224);
+}
